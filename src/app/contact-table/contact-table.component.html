@@ -1,0 +1,28 @@
+<div class="d-flex mx-auto mt-5" style="width: 600px;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Contact</th>
+        <th scope="col-xl">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <ng-container *ngIf="students"> -->
+        <tr *ngFor="let contactEl of contacts">
+          <th scope="row">{{contactEl.id}}</th>
+          <td>{{contactEl.name}}</td>
+          <td>{{contactEl.email}}</td>
+          <td>{{contactEl.contact_number}}</td>
+          <td class="d-flex gap-2">
+            <button (click)="viewContact(contactEl.id)" class="btn btn-primary">View</button>
+            <button (click)="editContact(contactEl.id)" class="btn btn-warning">Edit</button>
+            <button (click)="deleteContact(contactEl.id)" class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      <!-- </ng-container> -->
+    </tbody>
+  </table>
+</div>
