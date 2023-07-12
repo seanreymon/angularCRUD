@@ -1,3 +1,8 @@
-<app-contact-edit (contactForm)="contactSubmitForm($event)"></app-contact-edit>
-<app-contact-table [contacts]="contactsFromDashboard"></app-contact-table>
+<body>
+  <div class="container">
+    <h1 class="text-center">CONTACT MANAGEMENT</h1>
+    <app-contact-edit (contactForm)="contactSubmitForm($event)"></app-contact-edit>
+    <app-contact-table [contacts]="contactsFromDashboard"></app-contact-table>
+    </div>
+</body>
 

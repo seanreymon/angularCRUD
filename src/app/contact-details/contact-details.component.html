@@ -1,1 +1,29 @@
-<p>contact-details works!</p>
+<body>
+  <div class="container">
+    <button class="btn btn-primary" (click)="onBack()">Back</button>
+    <div class="contact-grid">
+      <h2>Contact Information:</h2><hr>
+        <div class="contact-info">
+          <p id="id">
+            <strong>ID: </strong>{{contact.id}}
+          </p>
+        </div>
+        <div class="contact-info">
+          <p id="name">
+            <strong>Name: </strong>{{contact.name}}
+          </p>
+        </div>
+        <div class="contact-info">
+          <p id="email">
+            <strong>Email: </strong>{{contact.email}}
+          </p>
+        </div>
+        <div class="contact-info">
+          <p id="contact">
+            <strong>Contact: </strong>{{contact.contact_number}}
+          </p>
+        </div>
+      </div>
+    </div>
+</body>
+

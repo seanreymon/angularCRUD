@@ -1,17 +1,63 @@
-<div class="mx-5">
-  <form #contactForm="ngForm" (ngSubmit)="contactSubmitForm(contactForm)">
+<form #contactFormData="ngForm" (ngSubmit)="contactSubmitForm(contactFormData)">
       <div class="mb-3">
           <label class="form-label">Name:</label>
-          <input type="text" class="form-control" id="name" name="name">
+          <input
+          [(ngModel)]="contact.name"
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          placeholder="Enter name"
+          aria-label="name"
+          required
+          minlength="2"
+          #name="ngModel">
+          <span class="help-block" *ngIf="!name.valid && (name.touched || name.dirty)">
+            <span *ngIf="name.errors?.['required']">Name is required.</span>
+            <span *ngIf="name.errors?.['minlength']">Name should be atleast 2 characters.</span>
+          </span>
         </div>
-        <div class="mb-3">
+      <div class="mb-3">
           <label class="form-label">Email:</label>
-          <input type="email" class="form-control" id="email" name="email">
+          <input
+          [(ngModel)]="contact.email"
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          placeholder="Enter email address"
+          aria-label="name"
+          required
+          email
+          #email="ngModel">
+          <span class="help-block" *ngIf="!email.valid && (email.dirty || email.touched)">
+            <span *ngIf="email.errors?.['required']">Email is required.</span>
+            <span *ngIf="email.errors?.['email']">Email is invalid.</span>
+          </span>
         </div>
-        <div class="mb-3">
+      <div class="mb-3">
           <label class="form-label">Contact Number:</label>
-          <input type="text" class="form-control" id="contactNumber" name="contactNumber">
+          <input
+          [(ngModel)]="contact.contact_number"
+          type="text"
+          class="form-control"
+          id="contact_number"
+          name="contact_number"
+          placeholder="Enter contact number"
+          aria-label="name"
+          required
+          pattern="[0-9]{11}"
+          #contact_number="ngModel">
+          <span class="help-block" *ngIf="!contact_number.valid && (contact_number.dirty || contact_number.touched)">
+            <span *ngIf="contact_number.errors?.['required']">Contact number is required.</span>
+            <span *ngIf="contact_number.errors?.['pattern']">Contact number must be 11 digits long.</span>
+          </span>
         </div>
-        <button type="submit" class="mt-2 btn btn-primary">{{isCreateMode ? 'Create Student' : 'Update Student'}}</button>
-  </form>
-</div>
+      <div class="d-flex gap-2">
+        <button type="submit" class="mt-2 btn btn-success" [disabled]="!contactFormData.valid">{{isEditMode ? 'Update' : 'Create'}}</button>
+        <ng-container *ngIf="isEditMode">
+          <button type="submit" class="mt-2 btn btn-danger" (click)="onCancel()">Cancel</button>
+        </ng-container>
+      </div>
+</form>
+

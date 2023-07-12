@@ -9,16 +9,19 @@ import { ContactService } from '../service/contact.service';
 })
 export class DashboardComponent implements OnInit {
   contactsFromDashboard: Contact[] = [];
-
   constructor(private contactService: ContactService) {}
 
   ngOnInit(): void {
     this.runGetAllContacts();
+    this.contactService.editModeChange.asObservable().subscribe((response) => {
+      if (response) {
+        this.runGetAllContacts();
+      }
+    });
   }
-
   runGetAllContacts() {
     this.contactService.getAllContacts().subscribe((contactResponse) => {
-      this.contactsFromDashboard = [...contactResponse];
+      this.contactsFromDashboard = contactResponse.slice();
     });
   }
 

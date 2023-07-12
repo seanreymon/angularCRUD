@@ -1,8 +1,9 @@
-<div class="d-flex mx-auto mt-5" style="width: 600px;">
-  <table class="table">
-    <thead>
+<div class="table-responsive mt-5">
+  <h3>Contact List</h3>
+  <table class="table table-sm table-bordered table-hover text-center">
+    <thead class="table-dark">
       <tr>
-        <th scope="col">Id</th>
+        <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
         <th scope="col">Contact</th>
@@ -10,19 +11,18 @@
       </tr>
     </thead>
     <tbody>
-      <!-- <ng-container *ngIf="students"> -->
         <tr *ngFor="let contactEl of contacts">
-          <th scope="row">{{contactEl.id}}</th>
-          <td>{{contactEl.name}}</td>
-          <td>{{contactEl.email}}</td>
-          <td>{{contactEl.contact_number}}</td>
-          <td class="d-flex gap-2">
+          <th class="align-middle" scope="row">{{contactEl.id}}</th>
+          <td class="align-middle">{{contactEl.name}}</td>
+          <td class="align-middle">{{contactEl.email}}</td>
+          <td class="align-middle">{{contactEl.contact_number}}</td>
+          <td class="d-flex gap-2 justify-content-center align-middle">
             <button (click)="viewContact(contactEl.id)" class="btn btn-primary">View</button>
             <button (click)="editContact(contactEl.id)" class="btn btn-warning">Edit</button>
             <button (click)="deleteContact(contactEl.id)" class="btn btn-danger">Delete</button>
           </td>
         </tr>
-      <!-- </ng-container> -->
     </tbody>
   </table>
 </div>
+
